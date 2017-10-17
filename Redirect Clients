@@ -1,0 +1,28 @@
+McAfee Technical Articles ID:   KB66892
+
+Environment
+  McAfee Agent (MA) 4.x
+  McAfee ePolicy Orchestrator (ePO) 5.x, 4.x
+Problem
+  You want to to redirect the McAfee Agent on a computer to communicate with a new ePO server.
+Solution
+  Do the following to redirect communication:
+  Click Start, Run, type explorer, and click OK.
+  Navigate to the following folder on the ePO server: c:\Program Files\McAfee\ePO\DB\Software\Current\ePOAgent3000\Install\0409.
+  Copy the following files to a temp folder on the client computer (for example, c:\Temp):
+    agentfipsmode
+    srpubkey.bin
+    sr2048pubkey.bin
+    reqseckey.bin
+    req2048seckey.bin
+    SiteList.xml 
+ 
+  Run the following command on the systems that need to have the agent communication redirected to the new ePO server:
+ 
+  NOTE: By default, FrmInst.exe is located in: c:\Program Files\McAfee\Common Framework.
+
+    FrmInst.exe /SiteInfo=c:\<temp_folder_path>\SiteList.xml
+
+    Where <temp_folder_path> is the location where the files listed in step 3 were copied to.
+
+      Example: FrmInst.exe /SiteInfo=c:\Temp\SiteList.xml
